@@ -6,8 +6,29 @@ const EMAIL = "iliashamel041@gmail.com";
 
 const NAV = 62; // hauteur de la barre de navigation
 
+// ---------- Données (d'après la section projets du portfolio actuel) ----------
+// liens.demo / liens.code : colle ici les liens de chaque projet,
+// les boutons apparaissent automatiquement quand le lien est rempli.
 
 const projets = [
+  {
+    id: "optique",
+    nom: "Première Optique",
+    type: "Mission client · 2 mois",
+    faits: ["E-commerce", "Mai – juil. 2026"],
+    couleur: "#c4a8f5",
+    role: "Mon rôle : développeur web et commercial",
+    accroche:
+      "Refonte complète du site d'une boutique de lunettes à Paris, pour moderniser son image et améliorer l'expérience des visiteurs.",
+    points: [
+      ["Nouvelle interface", "Moderne, responsive (ordinateur, tablette, mobile) et fidèle à l'identité visuelle de la boutique."],
+      ["Contenu et visibilité", "Services, collections, marques partenaires et avis Google, avec une navigation et un SEO optimisés."],
+      ["Suivi du client", "Analyse des besoins, maquette, retours du client, développement et intégration des contenus."],
+    ],
+    resultat: ["Objectif", "Moderniser l'image de la boutique et améliorer l'expérience utilisateur."],
+    techs: ["React.js", "Vercel", "Optimisation SEO", "Intelligence artificielle", "Cold calling"],
+    git: "https://github.com/ilha92",
+  },
   {
     id: "ecodeli",
     nom: "EcoDeli",
@@ -23,7 +44,7 @@ const projets = [
     ],
     resultat: ["Résultat", "Une infrastructure fiable, sécurisée et évolutive, adaptée à la croissance d'EcoDeli."],
     techs: ["React.js", "Node.js", "MongoDB", "Java", "Kotlin", "JavaScript", "HTML / CSS"],
-    liens: { demo: "", code: "" },
+    git: "https://github.com/roronoa-kenzo/Ecodeli",
   },
   {
     id: "drivncook",
@@ -41,7 +62,7 @@ const projets = [
     ],
     resultat: ["Objectif", "Centraliser les opérations et améliorer le suivi et la performance du réseau."],
     techs: ["PHP natif", "MySQL", "phpMyAdmin", "HTML", "CSS", "Bootstrap", "JavaScript"],
-    liens: { demo: "", code: "" },
+    git: "https://github.com/ilha92/drivncook",
   },
   {
     id: "vitafit",
@@ -59,7 +80,7 @@ const projets = [
     ],
     resultat: ["Objectif", "Gérer efficacement utilisateurs et abonnements, avec une expérience fluide pour les utilisateurs finaux."],
     techs: ["PHP", "PHPMailer", "MySQL", "MySQL Workbench", "phpMyAdmin", "HTML", "CSS", "Bootstrap", "JavaScript"],
-    liens: { demo: "", code: "" },
+    git: "https://github.com/1Batmain/Projet_annuel_2024",
   },
 ];
 
@@ -220,12 +241,83 @@ function SceneVitafit() {
   );
 }
 
-const scenes = { ecodeli: SceneEcoDeli, drivncook: SceneDrivnCook, vitafit: SceneVitafit };
+// Première Optique : site e-commerce responsive, collections, avis Google, SEO
+function SceneOptique() {
+  const cartes = [0, 1, 2];
+  const etoiles = [0, 1, 2, 3, 4];
+  return (
+    <svg viewBox="0 0 480 400" className="scene" role="img"
+      aria-label="Site e-commerce de lunettes sur ordinateur et sur mobile, avec des collections, des avis et une barre de performance qui progresse">
+      <g className="s-entre">
+        <rect x="24" y="36" width="340" height="270" rx="12" className="s-panneau" />
+      </g>
+      <circle cx="42" cy="54" r="3.5" fill="#ff6b6b" />
+      <circle cx="55" cy="54" r="3.5" fill="#f0a53a" />
+      <circle cx="68" cy="54" r="3.5" fill="#5fd08a" />
+      <rect x="90" y="46" width="150" height="16" rx="8" className="s-ui" />
+
+      <rect x="44" y="78" width="46" height="7" rx="3.5" className="s-accent" />
+      <rect x="230" y="79" width="30" height="5" rx="2.5" className="s-ui" />
+      <rect x="270" y="79" width="30" height="5" rx="2.5" className="s-ui" />
+      <rect x="310" y="79" width="34" height="5" rx="2.5" className="s-ui" />
+
+      <rect x="44" y="98" width="300" height="52" rx="8" fill="#16263a" />
+      <rect x="58" y="110" width="130" height="9" rx="4.5" className="s-ui" />
+      <rect x="58" y="126" width="62" height="14" rx="7" className="s-accent" />
+
+      {cartes.map((i) => (
+        <g key={i} transform={`translate(${44 + i * 104},164)`}>
+          <g className="s-entre" style={{ animationDelay: 0.3 + i * 0.18 + "s" }}>
+            <rect width="92" height="72" rx="8" fill="#16263a" stroke="#2a3b50" />
+            <g className="s-verre-groupe" style={{ animationDelay: 0.5 + i * 0.25 + "s" }}>
+              <circle cx="27" cy="30" r="12" className="s-verre" />
+              <circle cx="65" cy="30" r="12" className="s-verre" />
+              <path d="M39,29 q7,-5 14,0" className="s-verre" />
+              <path d="M15,27 l-6,-4 M77,27 l6,-4" className="s-verre" />
+            </g>
+            <rect x="16" y="54" width="44" height="5" rx="2.5" className="s-ui" />
+          </g>
+        </g>
+      ))}
+
+      <text x="44" y="276" className="s-texte">Avis Google</text>
+      {etoiles.map((i) => (
+        <g key={i} transform={`translate(${142 + i * 24},272)`}>
+          <path className="s-etoile" style={{ animationDelay: i * 0.22 + "s" }}
+            d="M0,-9 L2.6,-3 L9,-2.8 L4,1.5 L5.6,8 L0,4.5 L-5.6,8 L-4,1.5 L-9,-2.8 L-2.6,-3 Z" />
+        </g>
+      ))}
+
+      <g transform="translate(384,96)">
+        <g className="s-entre" style={{ animationDelay: "0.6s" }}>
+          <rect width="84" height="182" rx="16" className="s-panneau" />
+          <rect x="30" y="8" width="24" height="4" rx="2" className="s-ui" />
+          <rect x="10" y="26" width="64" height="40" rx="8" fill="#16263a" />
+          <rect x="18" y="36" width="40" height="7" rx="3.5" className="s-ui" />
+          <rect x="18" y="50" width="24" height="8" rx="4" className="s-accent" />
+          <rect x="10" y="76" width="64" height="48" rx="8" fill="#16263a" stroke="#2a3b50" />
+          <g className="s-verre-groupe" style={{ animationDelay: "1.1s" }}>
+            <circle cx="28" cy="98" r="9" className="s-verre" />
+            <circle cx="56" cy="98" r="9" className="s-verre" />
+            <path d="M37,97 q5,-4 10,0" className="s-verre" />
+          </g>
+          <rect x="10" y="134" width="64" height="12" rx="6" className="s-ui" />
+          <rect x="10" y="154" width="64" height="14" rx="7" className="s-accent" opacity="0.9" />
+        </g>
+      </g>
+
+      <text x="24" y="346" className="s-texte">SEO et performances</text>
+      <rect x="24" y="356" width="440" height="10" rx="5" fill="#1d2d41" />
+      <rect x="24" y="356" width="440" height="10" rx="5" className="s-perf" />
+    </svg>
+  );
+}
+
+const scenes = { optique: SceneOptique, ecodeli: SceneEcoDeli, drivncook: SceneDrivnCook, vitafit: SceneVitafit };
 
 // ---------- Détail d'un projet ----------
 
 function Detail({ p }) {
-  const { demo, code } = p.liens;
   return (
     <div className="detail">
       <div className="detail-puces">
@@ -257,15 +349,13 @@ function Detail({ p }) {
         ))}
       </ul>
 
-      <div className="detail-actions">
-        {demo && <a className="btn btn-clair" href={demo} target="_blank" rel="noreferrer">Voir le projet</a>}
-        {code && <a className="btn btn-contour" href={code} target="_blank" rel="noreferrer">Code</a>}
-        {!demo && !code && (
-          <a className="btn btn-contour" href="https://github.com/ilha92" target="_blank" rel="noreferrer">
-            Voir mon GitHub
+        {p.git && (
+        <div className="detail-actions">
+          <a className="btn btn-clair" href={p.git} target="_blank" rel="noreferrer">
+            Voir mon projet
           </a>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -349,7 +439,7 @@ function Projets() {
     <section id="projets" className="projets-section">
       <div className="projets-entete">
         <h2>Projets</h2>
-        <p>Trois projets concrets : faites défiler pour les parcourir.</p>
+        <p>Quatre projets concrets : faites défiler pour les parcourir.</p>
       </div>
 
       {petit ? (
@@ -561,11 +651,7 @@ function Pile() {
   );
 }
 
-/**
- * ================================================================
- * PARCOURS
- * ================================================================
- */
+// ---------- Parcours : timeline qui se dessine au scroll ----------
 
 function Parcours() {
   const [ouvert, setOuvert] = useState(0);
@@ -615,11 +701,7 @@ function Parcours() {
   );
 }
 
-/**
- * ================================================================
- * CONTACT
- * ================================================================
- */
+// ---------- Contact ----------
 
 function Contact() {
   const [copie, setCopie] = useState(false);
@@ -657,11 +739,7 @@ function Contact() {
   );
 }
 
-/**
- * ================================================================
- * APPLICATION
- * ================================================================
- */
+// ---------- Page ----------
 
 export default function App() {
   const [section, setSection] = useState("");
